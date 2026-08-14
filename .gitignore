@@ -1,0 +1,51 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Testing and development
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.vscode/
+.idea/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Training data and generated artifacts
+data/
+datasets/
+checkpoints/
+outputs/
+artifacts/
+logs/
+wandb/
+mlruns/
+
+# Large model and array files
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.npy
+*.npz
+
+# Operating systems
+.DS_Store
+Thumbs.db
