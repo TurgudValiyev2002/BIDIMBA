@@ -1,6 +1,6 @@
 # BIDIMBA
 
-**BIDIMBA** is a research framework for query-aware, sentence-level context compression for resource-constrained language models. It uses teacher-generated supervision and a bidirectional Mamba architecture to identify the sentences most relevant to a query, preserving complete sentences while selecting content within a token budget. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release date will be announced.
+**BIDIMBA** is a research framework for query-aware, sentence-level context compression for resource-constrained language models. It uses teacher-generated supervision and a bidirectional Mamba architecture to identify the sentences most relevant to a query, preserving complete sentences while selecting content within a token budget. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release date is **5 October 2026**.
 
 ## Overview
 
