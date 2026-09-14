@@ -20,7 +20,7 @@ LLM-generated importance supervision is used to train the compressor; the pipeli
 The teacher-labeled data is maintained independently in the
 [BIDIMBA-dataset](https://github.com/TurgudValiyev2002/BIDIMBA-dataset) repository.
 
-The dataset is derived from FinQA, ConvFinQA, and TAT-QA.
+The dataset is derived from FinQA, ConvFinQA, and TAT-QA (financial QA datasets).
 ## Repository Structure
 
 ```text
