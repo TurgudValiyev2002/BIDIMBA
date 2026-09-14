@@ -9,7 +9,7 @@ The intended pipeline is:
 2. **Shared encoding.** Encode the query and context units with the same domain-adapted ModernBERT encoder to obtain their semantic representations.
 3. **Feature construction.** Combine unit metadata with query-unit semantic interaction features, including element-wise products, absolute differences, and dot-product similarity between the query and unit embeddings.
 4. **Feature projection.** Project each unit's combined feature vector through 512- and 256-dimensional representations. This reduces the feature dimension while preserving the sequence of context units.
-5. **Bidirectional importance scoring.** Process the unit sequence in forward and backward directions using a bidirectional Mamba architecture. Fuse both directional representations and apply a scoring MLP to predict a continuous, query-conditioned importance score for each context unit.
+5. **Bidirectional importance scoring.** Process the unit sequence in forward and backward directions using a bidirectional Mamba architecture. Fuse both directional representations and apply a scoring MLP to predict a continuous, importance score for each context unit.
 6. **Protected hybrid selection.** Use the predicted importance scores and unit token lengths to select complete units within the token budget. Combine a protected allocation with an exact 0/1 knapsack selection over the remaining candidates and available budget.
 7. **Original-order recovery and inference.** Restore the retained units to their original order, assemble the compressed context, and pass it with the user query to the downstream LLM for answer generation.
 
