@@ -18,7 +18,7 @@ LLM-generated importance supervision is used to train the compressor; the pipeli
 ## Dataset
 
 The teacher-labeled data is maintained independently in the
-[DiMba-Dataset](https://github.com/TurgudValiyev2002/DiMba-Dataset) repository.
+[BIDIMBA-dataset](https://github.com/TurgudValiyev2002/BIDIMBA-dataset) repository.
 
 The dataset is derived from FinQA, ConvFinQA, and TAT-QA and contains sentence-level importance supervision for query-aware financial context compression.
 
