@@ -1,10 +1,7 @@
 # BIDIMBA
 
-**BIDIMBA** is a query-aware, extractive **context compression** framework for large language models (LLMs). Given a user query and its associated context, it selects relevant context units within a token budget **before the downstream LLM performs inference**. The framework uses LLM-generated supervision, a domain-adapted shared ModernBERT encoder, and a bidirectional Mamba scorer to estimate the importance of each unit. A protected hybrid selector retains complete units by considering both importance scores and token lengths. Finally, it restores their original order to form the compressed context. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release is **October 2026**.
+**BIDIMBA** is a query-aware, extractive **context compression** framework for large language models (LLMs). Given a user query and its associated context, it selects relevant context units within a token budget **before the downstream LLM performs inference**. BIDIMBA inputs are a user query, the associated context, and a retention ratio. Its output is a composed context based on retention ratio. The framework uses LLM-generated supervision, a domain-adapted shared ModernBERT encoder, and a bidirectional Mamba scorer to estimate the importance of each unit. A protected hybrid selector retains complete units by considering both importance scores and token lengths. Finally, it restores their original order to form the compressed context. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release is **October 2026**.
 
-## Overview
-
-BIDIMBA operates between context preparation or retrieval and downstream answer generation. Its inputs are a user query, the associated context, and a token budget. Its output is a shorter context composed of selected original units, which is passed to the downstream LLM together with the query. Compression is extractive: retained units are preserved rather than rewritten or summarized.
 
 The intended pipeline is:
 
