@@ -1,19 +1,22 @@
 # BIDIMBA
 
-**BIDIMBA** is a research framework for query-aware, sentence-level context compression for resource-constrained language models. It uses teacher-generated supervision and a bidirectional Mamba architecture to identify the sentences most relevant to a query, preserving complete sentences while selecting content within a token budget. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release is **October 2026**.
+**BIDIMBA** is a query-aware, extractive **context compression** framework for large language models (LLMs). Given a user query and its associated context, it selects relevant context units within a token budget **before the downstream LLM performs inference**. The framework uses LLM-generated supervision, a domain-adapted shared ModernBERT encoder, and a bidirectional Mamba scorer to estimate the importance of each unit. A protected hybrid selector retains complete units and restores their original order to form the compressed context. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release is **October 2026**.
 
 ## Overview
 
-BIDIMBA learns continuous sentence-importance scores from teacher-generated supervision. It preserves complete sentences and models document-level relationships using a bidirectional Mamba architecture.
+BIDIMBA operates between context preparation or retrieval and downstream answer generation. Its inputs are a user query, the associated context, and a token budget. Its output is a shorter context composed of selected original units, which is passed to the downstream LLM together with the query. Compression is extractive: retained units are preserved rather than rewritten or summarized.
 
 The intended pipeline is:
 
-1. Segment the input context into sentences.
-2. encode the query and sentences using a text encoder;
-3. model sentence relationships using bidirectional Mamba;
-4. predict continuous sentence-importance scores;
-5. select the highest-utility sentences under a token budget; and
-6. provide the compressed context to a downstream language model.
+1. **Context decomposition.** Divide the context into meaningful units, such as sentences, bullet points, titles, subtitles, and table rows. Preserve each unit's original position so that the source order can be recovered after selection.
+2. **Shared encoding.** Encode the query and context units with the same domain-adapted ModernBERT encoder to obtain their semantic representations.
+3. **Feature construction.** Combine unit metadata with query-unit semantic interaction features, including element-wise products, absolute differences, and dot-product similarity between the query and unit embeddings.
+4. **Feature projection.** Project each unit's combined feature vector through 512- and 256-dimensional representations. This reduces the feature dimension while preserving the sequence of context units.
+5. **Bidirectional importance scoring.** Process the unit sequence in forward and backward directions using a bidirectional Mamba architecture. Fuse both directional representations and apply a scoring MLP to predict a continuous, query-conditioned importance score for each context unit.
+6. **Protected hybrid selection.** Use the predicted importance scores and unit token lengths to select complete units within the token budget. Combine a protected allocation with an exact 0/1 knapsack selection over the remaining candidates and available budget.
+7. **Original-order recovery and inference.** Restore the retained units to their original order, assemble the compressed context, and pass it with the user query to the downstream LLM for answer generation.
+
+LLM-generated importance supervision is used to train the compressor; the pipeline above describes how the trained compressor prepares context for downstream inference.
 
 ## Dataset
 
@@ -32,7 +35,7 @@ notebooks/           Exploratory analysis
 scripts/             Training and evaluation entry points
 src/dimba/           Core Python package
 tests/               Automated tests
-``` 
+```
 
 ## Reproducibility
 
