@@ -1,12 +1,10 @@
-﻿# DiMba
+# BIDIMBA
 
-**DiMba (Distilled Mamba)** is a query-aware, sentence-level context-compression framework for resource-constrained language models.
-
-> **Status:** Active research and development. The implementation, configurations, and model checkpoints will be released progressively.
+**BIDIMBA** is a research framework for query-aware, sentence-level context compression for resource-constrained language models. It uses teacher-generated supervision and a bidirectional Mamba architecture to identify the sentences most relevant to a query, preserving complete sentences while selecting content within a token budget. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release date will be announced.
 
 ## Overview
 
-DiMba learns continuous sentence-importance scores from teacher-generated supervision. It preserves complete sentences and models document-level relationships using a bidirectional Mamba architecture.
+BIDIMBA learns continuous sentence-importance scores from teacher-generated supervision. It preserves complete sentences and models document-level relationships using a bidirectional Mamba architecture.
 
 The intended pipeline is:
 
