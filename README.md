@@ -6,7 +6,7 @@
 The intended pipeline is:
 
 1. **Context decomposition.** Divide the context into meaningful units, such as sentences, bullet points, titles, subtitles, and table rows. Preserve each unit's original position so that the source order can be recovered after selection.
-2. **Shared encoding.** Encode the query and context units with the same domain-adapted ModernBERT encoder to obtain their semantic representations.
+2. **Shared encoding.** Encode the query and context units with the same ModernBERT encoder to obtain their semantic representations.
 3. **Feature construction.** Combine unit metadata with query-unit semantic interaction features, including element-wise products, absolute differences, and dot-product similarity between the query and unit embeddings.
 4. **Feature projection.** Project each unit's combined feature vector through 512- and 256-dimensional representations. This reduces the feature dimension while preserving the sequence of context units.
 5. **Bidirectional importance scoring.** Process the unit sequence in forward and backward directions using a bidirectional Mamba architecture. Fuse both directional representations and apply a scoring MLP to predict a continuous, importance score for each context unit.
