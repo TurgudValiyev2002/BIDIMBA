@@ -1,6 +1,6 @@
 # BIDIMBA
 
-**BIDIMBA** is a query-aware, extractive **context compression** framework for large language models (LLMs). Given a user query and its associated context, it selects relevant context units within a token budget **before the downstream LLM performs inference**. The framework uses LLM-generated supervision, a domain-adapted shared ModernBERT encoder, and a bidirectional Mamba scorer to estimate the importance of each unit. A protected hybrid selector retains complete units and restores their original order to form the compressed context. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release is **October 2026**.
+**BIDIMBA** is a query-aware, extractive **context compression** framework for large language models (LLMs). Given a user query and its associated context, it selects relevant context units within a token budget **before the downstream LLM performs inference**. The framework uses LLM-generated supervision, a domain-adapted shared ModernBERT encoder, and a bidirectional Mamba scorer to estimate the importance of each unit. A protected hybrid selector retains complete units by considering both importance scores and token lengths. Finally, it restores their original order to form the compressed context. The project is under active development, with code, experiment configurations, and model checkpoints planned for progressive release; the estimated release is **October 2026**.
 
 ## Overview
 
