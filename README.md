@@ -36,7 +36,7 @@ tests/               Automated tests
 
 ## Reproducibility
 
-Installation, data preparation, training, inference, and evaluation instructions will be added as the implementation is finalized.
+Installation, training, inference, and evaluation instructions will be added as the implementation is finalized.
 
 ## Authors
 
